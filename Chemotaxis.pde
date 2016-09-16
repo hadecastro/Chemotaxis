@@ -4,7 +4,7 @@
  {    
  	size(800, 800);
  	//initialize bacteria variables here  
- 	colony = new Bacteria[8];
+ 	colony = new Bacteria[20];
  	for(int i = 0; i < colony.length; i++)
  	{
  		colony[i] = new Bacteria();
@@ -25,37 +25,64 @@
 class Bacteria    
  {     
  	//lots of java!  
- 	int myX, myY;
+ 	int myX, myY, myColorRed, myColorGreen, myColorBlue;
  	Bacteria()
  	{
  		myX = 400;
  		myY = 400;
+ 		myColorRed = (int)(Math.random()* 155) + 100;
+ 		myColorGreen = (int)(Math.random()* 155) + 100;
+ 		myColorBlue = (int)(Math.random()* 155) + 100;
  	}
 
  	void walk()
  	{
- 		if (mouseX > myX)
+ 		if (mouseX > myX && mouseX < myX + 250)
  		{
- 			myX = myX + (int)(Math.random()*4)-3;	
+ 			myX = myX + (int)(Math.random()*4)-2;	
  		}
- 		else if(mouseX < myX)
+ 		else if(mouseX < myX && mouseX > myX - 250)
  		{
- 			myX = myX + (int)(Math.random()*6)-1;
+ 			myX = myX + (int)(Math.random()*4)-1;
  		}
-
- 		if (mouseY > myY)
+ 		else 
  		{
- 			myY = myY + (int)(Math.random()*4)-3;
+ 			myX = myX + (int)(Math.random()*5)-2;	
  		}
- 		else if (mouseY < myY)
+ 		 
+ 		if (mouseY > myY && mouseY < myY + 250)
  		{
- 			myY = myY + (int)(Math.random()*6)-1;
+ 			myY = myY + (int)(Math.random()*4)-2;
+ 		}
+ 		else if (mouseY < myY && mouseY > myY - 250)
+ 		{
+ 			myY = myY + (int)(Math.random()*4)-1;
+ 		}
+ 		else 
+ 		{
+ 			myY = myY + (int)(Math.random()*5)-2;
  		}
  		
  	}
  	void show()
  	{
- 		fill(200, 100, 200);
+ 		fill(myColorRed, myColorGreen, myColorBlue);
  		ellipse(myX, myY, 5, 5);
+ 		if (myX > 810)
+ 		{
+ 			myX = -3;
+ 		}
+ 		else if(myX < -10)
+ 		{
+ 			myX = 805;
+ 		}
+ 		if (myY > 810)
+ 		{
+ 			myY = -3;
+ 		}
+ 		else if(myY < -10)
+ 		{
+ 			myY = 805;
+ 		}
  	}
  }
