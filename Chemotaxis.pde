@@ -3,6 +3,7 @@
  void setup()   
  {    
  	size(800, 800);
+ 	background(0);
  	//initialize bacteria variables here  
  	colony = new Bacteria[100];
  	for(int i = 0; i < colony.length; i++)
@@ -22,17 +23,21 @@
  	}
  }
 
+ void mousePressed()
+ {
+ 	background(0);
+ }
+
 class Bacteria    
  {     
  	//lots of java!  
- 	int myX, myY, myColorRed, myColorGreen, myColorBlue;
+ 	int myX, myY, myColor;
  	Bacteria()
  	{
  		myX = 400;
  		myY = 400;
- 		myColorRed = (int)(Math.random()* 155) + 100;
- 		myColorGreen = (int)(Math.random()* 155) + 100;
- 		myColorBlue = (int)(Math.random()* 155) + 100;
+ 		myColor = color((int)(Math.random()* 155) + 100, (int)(Math.random()* 155) + 100, (int)(Math.random()* 155) + 100);
+ 		
  	}
 
  	void walk()
@@ -67,7 +72,7 @@ class Bacteria
  	void show()
  	{
  		noStroke();
- 		fill(myColorRed, myColorGreen, myColorBlue);
+ 		fill(myColor);
  		ellipse(myX, myY, 2, 2);
  		if (myX > 810)
  		{
