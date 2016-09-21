@@ -5,7 +5,7 @@
  	size(800, 800);
  	background(0);
  	//initialize bacteria variables here  
- 	colony = new Bacteria[100];
+ 	colony = new Bacteria[200];
  	for(int i = 0; i < colony.length; i++)
  	{
  		colony[i] = new Bacteria();
@@ -15,7 +15,7 @@
  void draw()   
  {    
  	//move and show the bacteria 
- 	//background(0);
+ 	
  	for(int i = 0; i < colony.length; i++)
  	{
  		colony[i].walk();
@@ -42,11 +42,11 @@ class Bacteria
 
  	void walk()
  	{
- 		if (mouseX > myX && mouseX < myX + 200)
+ 		if (mouseX > myX &&  myX + 50 > mouseX && mouseY < myY + 50)
  		{
  			myX = myX + (int)(Math.random()*4)-3;	
  		}
- 		else if(mouseX < myX && mouseX > myX - 200)
+ 		else if(mouseX < myX &&  myX - 50 < mouseX && mouseY > myY - 50)
  		{
  			myX = myX + (int)(Math.random()*5)-1;
  		}
@@ -55,11 +55,11 @@ class Bacteria
  			myX = myX + (int)(Math.random()*7)-3;	
  		}
  		 
- 		if (mouseY > myY && mouseY < myY + 200)
+ 		if (mouseY > myY && myX + 50 > mouseX && mouseY < myY + 50)
  		{
  			myY = myY + (int)(Math.random()*4)-3;
  		}
- 		else if (mouseY < myY && mouseY > myY - 200)
+ 		else if (mouseY < myY && myX - 50 < mouseX && mouseY > myY - 50)
  		{
  			myY = myY + (int)(Math.random()*5)-1;
  		}
@@ -69,6 +69,7 @@ class Bacteria
  		}
  		
  	}
+
  	void show()
  	{
  		noStroke();
