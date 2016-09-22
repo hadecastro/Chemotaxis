@@ -15,7 +15,6 @@
  void draw()   
  {    
  	//move and show the bacteria 
- 	
  	for(int i = 0; i < colony.length; i++)
  	{
  		colony[i].walk();
@@ -26,6 +25,10 @@
  void mousePressed()
  {
  	background(0);
+ 	 for(int i = 0; i < colony.length; i++)
+ 	{
+ 		colony[i].middle();
+ 	}
  }
 
 class Bacteria    
@@ -42,11 +45,11 @@ class Bacteria
 
  	void walk()
  	{
- 		if (mouseX > myX &&  myX + 50 > mouseX && mouseY < myY + 50)
+ 		if (mouseX > myX && mouseX < myX + 50 && mouseY < myY + 50 && mouseY > myY - 50)
  		{
  			myX = myX + (int)(Math.random()*4)-3;	
  		}
- 		else if(mouseX < myX &&  myX - 50 < mouseX && mouseY > myY - 50)
+ 		else if(mouseX < myX &&  mouseX > myX - 50 && mouseY < myY + 50 && mouseY > myY - 50)
  		{
  			myX = myX + (int)(Math.random()*5)-1;
  		}
@@ -55,11 +58,11 @@ class Bacteria
  			myX = myX + (int)(Math.random()*7)-3;	
  		}
  		 
- 		if (mouseY > myY && myX + 50 > mouseX && mouseY < myY + 50)
+ 		if (mouseY > myY && mouseX < myX + 50 &&  mouseX > myX - 50 &&  mouseY < myY + 50)
  		{
  			myY = myY + (int)(Math.random()*4)-3;
  		}
- 		else if (mouseY < myY && myX - 50 < mouseX && mouseY > myY - 50)
+ 		else if (mouseY < myY && mouseX > myX - 50 && mouseX < myX + 50 && mouseY > myY - 50)
  		{
  			myY = myY + (int)(Math.random()*5)-1;
  		}
@@ -91,5 +94,10 @@ class Bacteria
  		{
  			myY = 805;
  		}
+ 	}
+ 	void middle()
+ 	{
+ 		myX = 400;
+ 		myY = 400;
  	}
  }
